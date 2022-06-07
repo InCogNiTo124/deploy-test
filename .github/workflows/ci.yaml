@@ -11,3 +11,5 @@ jobs:
     steps:
       - name: Run deploy ansible
         uses: InCogNiTo124/scaling-lamp@master
+        with:
+          vault-password: ${{ secrets.VAULT_PASSWORD }}
