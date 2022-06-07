@@ -12,3 +12,4 @@ jobs:
         uses: InCogNiTo124/scaling-lamp@master
         with:
           vault-password: ${{ secrets.VAULT_PASSWORD }}
+
