@@ -8,7 +8,6 @@ services:
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=nginx_network"
       - "traefik.http.routers.nginx.rule=Host(`test.msmetko.xyz`)"
       - "traefik.http.routers.nginx.entrypoints=websecure"
       - "traefik.http.routers.nginx.tls=true"
@@ -16,7 +15,8 @@ services:
     expose:
       - "80"
     networks:
-      - nginx_network
+      - traefik_default
 
 networks:
-  nginx_network: {}
+  traefik_default:
+    external: true
