@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  nginx:
+    image: my-nginx
+    container_name: nginx-test
+    build:
+      dockerfile: Dockerfile
+      context: .
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_default"
+      - "traefik.http.routers.nginx.rule=Host(`msmetko.xyz`)"
+      - "traefik.http.routers.nginx.entrypoints=websecure"
+      - "traefik.http.routers.nginx.tls=true"
+      - "traefik.http.routers.nginx.tls.certresolver=le"
+    expose:
+      - "80"
+    networks:
+      - traefik_default
+
+networks:
+  traefik_default:
+    external: true
