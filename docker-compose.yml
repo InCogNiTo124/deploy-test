@@ -16,7 +16,7 @@ services:
     expose:
       - "80"
     networks:
-      - traefik_default
+      - nginx_network
 
 networks:
   nginx_network: {}
