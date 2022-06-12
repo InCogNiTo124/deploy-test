@@ -1,4 +1,3 @@
-version: '3.7'
 services:
   nginx:
     image: my-nginx
@@ -9,8 +8,8 @@ services:
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=traefik_default"
-      - "traefik.http.routers.nginx.rule=Host(`msmetko.xyz`)"
+      - "traefik.docker.network=nginx_network"
+      - "traefik.http.routers.nginx.rule=Host(`test.msmetko.xyz`)"
       - "traefik.http.routers.nginx.entrypoints=websecure"
       - "traefik.http.routers.nginx.tls=true"
       - "traefik.http.routers.nginx.tls.certresolver=le"
@@ -20,5 +19,4 @@ services:
       - traefik_default
 
 networks:
-  traefik_default:
-    external: true
+  nginx_network: {}
