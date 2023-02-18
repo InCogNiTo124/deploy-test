@@ -1,10 +1,7 @@
 services:
   nginx:
-    image: my-nginx
+    image: ghcr.io/incognito124/deploy-test:latest
     container_name: nginx-test
-    build:
-      dockerfile: Dockerfile
-      context: .
     restart: always
     labels:
       - "traefik.enable=true"
