@@ -41,4 +41,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Trigger deploy
-        run: curl ${{ secrets.DEPLOY_WEBHOOK }}
+        if: ${{ github.event_name == 'push' }}
+        run: curl -X POST ${{ secrets.DEPLOY_WEBHOOK }}
